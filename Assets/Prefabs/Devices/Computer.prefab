@@ -313,7 +313,7 @@ MonoBehaviour:
   deviceName: Computer
   deviceGameObjectOn: {fileID: 7440611377508216090}
   deviceGameObjectOff: {fileID: 2979222988938234816}
-  drainPerSeconds: 0
+  drainPerSeconds: 1
 --- !u!65 &6369013228655821395
 BoxCollider:
   m_ObjectHideFlags: 0

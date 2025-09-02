@@ -37,4 +37,6 @@ public class GameManager : MonoBehaviour
     public int Score => score;
     public float MaxEnergy => maxEnergy;
     public float CurrentEnergy => currentEnergy;
+
+    public bool IsEmpty() => currentEnergy <= 0.0001f;
 }

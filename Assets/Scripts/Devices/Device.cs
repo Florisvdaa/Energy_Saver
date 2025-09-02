@@ -45,15 +45,14 @@ public class Device : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        // Requires a Collider on this GameObject (or child with this script receiving the click)
-        TurnOffDevice();
-
-        GameManager.Instance.AddScore();
-        GameManager.Instance.AddEnergy(1);
-
-        //DeviceManager.Instance.OnDeviceTurnedOff(this);
+        if (isOn)
+        {
+            TurnOffDevice();
+            GameManager.Instance.AddScore();
+            GameManager.Instance.AddEnergy(1);
+        }
     }
-
+   
     // Gizmo to see current state in Scene view
     void OnDrawGizmosSelected()
     {
@@ -64,5 +63,23 @@ public class Device : MonoBehaviour
     {
         deviceGameObjectOn.SetActive(false);
         deviceGameObjectOff.SetActive(true);
+    }
+
+    // Tooltip manager
+    private void OnMouseOver()
+    {
+        TooltipManager.Instance?.Show(deviceName, drainPerSeconds, isOn);
+        
+    }
+
+    private void OnMouseExit()
+    {
+        TooltipManager.Instance?.Hide();
+    }
+
+    private void OnDisable()
+    {
+        // prevent stuck tooltip if object is disabled while hovered
+        if (TooltipManager.Instance) TooltipManager.Instance.Hide();
     }
 }

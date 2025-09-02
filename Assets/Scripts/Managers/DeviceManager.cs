@@ -8,7 +8,7 @@ public class DeviceManager : MonoBehaviour
     [SerializeField] private List<Device> devices = new List<Device>();
 
     [Header("Difficulty")]
-    [SerializeField] private float spawnInterval = 1.5f;   // how often a device turns on
+    [SerializeField] private float spawnInterval = 2f;   // how often a device turns on
     [SerializeField] private float minSpawnInterval = 0.5f;
     [SerializeField] private float rampPerSecond = 0.05f;  // how fast interval decreases
 
@@ -55,7 +55,7 @@ public class DeviceManager : MonoBehaviour
         GameManager.Instance.AddEnergy(-totalDrain * Time.deltaTime);
 
         //energyBar.AddEnergy(-totalDrain * Time.deltaTime);
-
+        
         //if (energyBar.IsEmpty())
             //EndGame();
     }

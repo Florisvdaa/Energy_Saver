@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: m_InnerSpotAngle
       value: 179
       objectReference: {fileID: 0}
+    - target: {fileID: 5849865328107812328, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
+      propertyPath: drainPerSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6369013228655821395, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_Size.x
       value: 1.2
