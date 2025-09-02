@@ -9,6 +9,7 @@ public class Device : MonoBehaviour
     [SerializeField] private float drainPerSeconds;
 
     private bool isOn = false;
+    private int originalLayer;
 
     public bool IsOn => isOn;
     public float DrainPerSeconds => drainPerSeconds;
@@ -65,16 +66,36 @@ public class Device : MonoBehaviour
         deviceGameObjectOff.SetActive(true);
     }
 
+    private void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
+    }
+
     // Tooltip manager
     private void OnMouseOver()
     {
+        if (originalLayer == 0)
+            originalLayer = gameObject.layer;
+
+        SetLayerRecursively(gameObject, LayerMask.NameToLayer("Outline"));
+
         TooltipManager.Instance?.Show(deviceName, drainPerSeconds, isOn);
-        
+
+         // change layer to outline layer.
     }
 
     private void OnMouseExit()
     {
+        SetLayerRecursively(gameObject, originalLayer);
+
         TooltipManager.Instance?.Hide();
+
+        // Remove outline layer
     }
 
     private void OnDisable()

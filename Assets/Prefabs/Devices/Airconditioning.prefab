@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3048809599048823278}
   - component: {fileID: 9007960700489475194}
   - component: {fileID: 3540517980343153107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7481158556375854792}
   - component: {fileID: 5788606853146531828}
   - component: {fileID: 1028712155197511983}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: On (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conditioner_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6508840813055617224, guid: 64c14a886921755449902a9b5c91fbe5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -307,8 +311,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2745207887623841766, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745207887623841766, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2979222988938234816, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2979222988938234816, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_IsActive
@@ -317,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 3078272294568605288, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_Name
       value: Airconditioning
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078272294568605288, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3313194607576380450, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_LocalPosition.y
@@ -361,6 +377,10 @@ PrefabInstance:
     - target: {fileID: 6369013228655821395, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_Center.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440611377508216090, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7440611377508216090, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: m_IsActive
@@ -450,6 +470,10 @@ PrefabInstance:
     - target: {fileID: 730633800709749457, guid: ee34f9e3fe0b78648a71e9de304f4a20, type: 3}
       propertyPath: m_Name
       value: SpeedBoost_aside
+      objectReference: {fileID: 0}
+    - target: {fileID: 730633800709749457, guid: ee34f9e3fe0b78648a71e9de304f4a20, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3531347389701799076, guid: ee34f9e3fe0b78648a71e9de304f4a20, type: 3}
       propertyPath: m_LocalScale.x
@@ -600,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 6508840813055617224, guid: 64c14a886921755449902a9b5c91fbe5, type: 3}
       propertyPath: m_Name
       value: Conditioner_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508840813055617224, guid: 64c14a886921755449902a9b5c91fbe5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
