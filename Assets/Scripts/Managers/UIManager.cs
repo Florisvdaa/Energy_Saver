@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Slider energySlider;
+
+    [Header("Locked UI")]
+    [SerializeField] private GameObject lockedSegment;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -29,6 +32,8 @@ public class UIManager : MonoBehaviour
             energySlider.maxValue = GameManager.Instance.MaxEnergy;
             energySlider.value = GameManager.Instance.CurrentEnergy;
         }
+
+        CheckIfRoomIsLocked();
     }
 
     private void Update()
@@ -36,4 +41,21 @@ public class UIManager : MonoBehaviour
         if (scoreText) scoreText.text = $"Score: {GameManager.Instance.Score}";
         energySlider.value = GameManager.Instance.CurrentEnergy;
     }
+
+    public void CheckIfRoomIsLocked()
+    {
+        if (RoomManager.Instance == null || lockedSegment == null) return;
+
+        Room currentRoom = RoomManager.Instance.AvailableRooms[RoomManager.Instance.CurrentIndex];
+
+        if (currentRoom != null && !currentRoom.IsUnlocked)
+        {
+            lockedSegment.SetActive(true);
+        }
+        else
+        {
+            lockedSegment.SetActive(false);
+        }
+    }
+
 }

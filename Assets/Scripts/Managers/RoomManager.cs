@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    public static RoomManager Instance { get; private set; }
+
     [Header("Rooms to move (their Y/Z can be equal)")]
     [SerializeField] private Transform[] rooms;            // e.g. at x = -35, 0, 35
     [SerializeField] private Room[] availableRooms;
@@ -22,6 +24,15 @@ public class RoomManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         if (rooms == null || rooms.Length == 0)
             return;
 
@@ -93,6 +104,8 @@ public class RoomManager : MonoBehaviour
 
         index = newIndex;
         isMoving = false;
+
+        UIManager.Instance.CheckIfRoomIsLocked();
     }
 
     void ApplyOffset(float offsetX)
@@ -107,6 +120,7 @@ public class RoomManager : MonoBehaviour
 
     public int CurrentIndex => index;
     public int RoomCount => rooms?.Length ?? 0;
+    public Room[] AvailableRooms => availableRooms;
 
     private void Update()
     {
