@@ -4,12 +4,16 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     [Header("Rooms to move (their Y/Z can be equal)")]
-    public Transform[] rooms;            // e.g. at x = -35, 0, 35
+    [SerializeField] private Transform[] rooms;            // e.g. at x = -35, 0, 35
+    [SerializeField] private Room[] availableRooms;
 
     [Header("Navigation")]
-    public int startIndex = 1;           // 0 = left, 1 = middle, 2 = right
-    public float moveDuration = 0.6f;
-    public AnimationCurve ease = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    [SerializeField] private int startIndex = 1;           // 0 = left, 1 = middle, 2 = right
+    [SerializeField] private float moveDuration = 0.6f;
+    [SerializeField] private AnimationCurve ease = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+    //TEST
+    public Room roomUnlock;
 
     Vector3[] basePos;                   // original positions
     float currentOffsetX;                // how far we’ve shifted everything
@@ -30,6 +34,27 @@ public class RoomManager : MonoBehaviour
         // Center selected room at camera X (assume camera is at X = 0; change if needed)
         currentOffsetX = -basePos[index].x;
         ApplyOffset(currentOffsetX);
+
+        SetupRooms();
+    }
+
+    private void SetupRooms()
+    {
+        availableRooms = new Room[rooms.Length];
+
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            Room r = rooms[i].GetComponent<Room>();
+            if (r != null)
+            {
+                availableRooms[i] = r;
+            }
+            else
+            {
+                Debug.LogWarning($"RoomManager: No Room component found on {rooms[i].name}");
+            }
+        }
+
     }
 
     public void GoLeft() => SetRoom(index - 1);
@@ -82,4 +107,13 @@ public class RoomManager : MonoBehaviour
 
     public int CurrentIndex => index;
     public int RoomCount => rooms?.Length ?? 0;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            availableRooms[0].UnlockRoom();
+            DeviceManager.Instance.OnRoomUnlocked(availableRooms[0]);
+        }
+    }
 }

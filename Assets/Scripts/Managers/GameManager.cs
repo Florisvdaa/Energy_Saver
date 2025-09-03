@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     private float maxEnergy = 100f;
     private float currentEnergy;
+
+    public GameObject deviceManager;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,6 +21,13 @@ public class GameManager : MonoBehaviour
         }
 
         currentEnergy = maxEnergy;
+    }
+
+    // Debug
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+            deviceManager.SetActive(true);
     }
 
     public void AddScore()
