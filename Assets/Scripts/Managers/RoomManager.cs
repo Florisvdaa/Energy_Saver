@@ -65,8 +65,30 @@ public class RoomManager : MonoBehaviour
 
     }
 
-    public void GoLeft() => SetRoom(index - 1);
-    public void GoRight() => SetRoom(index + 1);
+    public void GoLeft()
+    {
+        if (index <= 0)
+        {
+            Debug.Log("No rooms to the left");
+            FeedbackManager.Instance.GetNoRoomsLeftFeedback().PlayFeedbacks();
+            return;
+        }
+
+        SetRoom(index - 1);
+    }
+
+    public void GoRight()
+    {
+        if (index >= rooms.Length - 1)
+        {
+            Debug.Log("No rooms to the right");
+            FeedbackManager.Instance.GetNoRoomsRightFeedback().PlayFeedbacks();
+            return;
+        }
+
+        SetRoom(index + 1);
+    }
+
 
     public void SetRoom(int newIndex)
     {
@@ -83,6 +105,7 @@ public class RoomManager : MonoBehaviour
     IEnumerator MoveRoutine(float targetOffsetX, int newIndex)
     {
         FeedbackManager.Instance.GetRoomNameFeedback().SkipToTheEnd();
+        FeedbackManager.Instance.GetLockedUIFeedback().ResumeFeedbacks();
 
         isMoving = true;
 

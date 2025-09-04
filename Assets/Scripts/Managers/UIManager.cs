@@ -70,6 +70,8 @@ public class UIManager : MonoBehaviour
         if (currentRoom != null && !currentRoom.IsUnlocked)
         {
             lockedSegment.SetActive(true);
+
+            FeedbackManager.Instance.GetLockedUIFeedback().PlayFeedbacks();
         }
         else
         {
