@@ -14,13 +14,10 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private float moveDuration = 0.6f;
     [SerializeField] private AnimationCurve ease = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
-    //TEST
-    public Room roomUnlock;
-
-    Vector3[] basePos;                   // original positions
-    float currentOffsetX;                // how far we’ve shifted everything
-    int index;
-    bool isMoving;
+    private Vector3[] basePos;                   // original positions
+    private float currentOffsetX;                // how far we’ve shifted everything
+    private int index;
+    private bool isMoving;
 
     void Awake()
     {
@@ -85,6 +82,8 @@ public class RoomManager : MonoBehaviour
 
     IEnumerator MoveRoutine(float targetOffsetX, int newIndex)
     {
+        FeedbackManager.Instance.GetRoomNameFeedback().SkipToTheEnd();
+
         isMoving = true;
 
         float start = currentOffsetX;
@@ -105,6 +104,7 @@ public class RoomManager : MonoBehaviour
         index = newIndex;
         isMoving = false;
 
+        UIManager.Instance.DisplayRoomName();
         UIManager.Instance.CheckIfRoomIsLocked();
     }
 
@@ -128,6 +128,12 @@ public class RoomManager : MonoBehaviour
         {
             availableRooms[0].UnlockRoom();
             DeviceManager.Instance.OnRoomUnlocked(availableRooms[0]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            availableRooms[2].UnlockRoom();
+            DeviceManager.Instance.OnRoomUnlocked(availableRooms[2]);
         }
     }
 }

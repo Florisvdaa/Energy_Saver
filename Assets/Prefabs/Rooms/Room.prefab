@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fbe3a7fb74d764fba06f19d3e4f88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomName: Bedroom
   mainLighting: {fileID: 5405044036993299488}
   isUnlocked: 0
   blackMaterial: {fileID: 2100000, guid: 072e62bb4b2188248ab162adf0e7c818, type: 2}

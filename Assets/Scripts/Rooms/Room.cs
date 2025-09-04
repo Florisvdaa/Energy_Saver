@@ -3,6 +3,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [Header("Room Settings")]
+    [SerializeField] private string roomName;
     [SerializeField] private GameObject mainLighting;
     [SerializeField] private bool isUnlocked = false;
 
@@ -12,7 +13,7 @@ public class Room : MonoBehaviour
     private Material[][] originalMaterials;
     private Renderer[] roomRenderers;
     public bool IsUnlocked => isUnlocked;
-
+    public string RoomName => roomName;
 
     // Untiy registery
     private void Awake()

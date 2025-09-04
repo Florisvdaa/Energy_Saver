@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Locked UI")]
     [SerializeField] private GameObject lockedSegment;
+
+    [Header("Room name")]
+    [SerializeField] private TextMeshProUGUI roomName;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -40,6 +43,22 @@ public class UIManager : MonoBehaviour
     {
         if (scoreText) scoreText.text = $"Score: {GameManager.Instance.Score}";
         energySlider.value = GameManager.Instance.CurrentEnergy;
+
+        // Debug 
+        //DisplayRoomName();
+    }
+
+    public void DisplayRoomName()
+    {
+        if (RoomManager.Instance == null) return;
+
+        Room currentRoom = RoomManager.Instance.AvailableRooms[RoomManager.Instance.CurrentIndex];
+        if (currentRoom != null)
+        {
+            roomName.text = currentRoom.RoomName;
+        }
+
+        FeedbackManager.Instance.GetRoomNameFeedback().PlayFeedbacks();
     }
 
     public void CheckIfRoomIsLocked()

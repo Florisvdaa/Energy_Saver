@@ -416,6 +416,10 @@ PrefabInstance:
       value: 58.020683
       objectReference: {fileID: 0}
     - target: {fileID: 5849865328107812328, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
+      propertyPath: deviceName
+      value: Game Console
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849865328107812328, guid: 9508b4b7a26be944e813ad3585a84215, type: 3}
       propertyPath: drainPerSeconds
       value: 2
       objectReference: {fileID: 0}
